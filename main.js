@@ -16,8 +16,10 @@ export class Trigger {
 
   triggers = async (data) => {
     if (
-      new Date().getHours() >= Number(data.hours) &&
-      new Date().getMinutes() >= Number(data.minutes)
+      new Date().getHours() + this.config.timeAdjustment
+        ? this.config.timeAdjustment
+        : 0 >= Number(data.hours) &&
+          new Date().getMinutes() >= Number(data.minutes)
     ) {
       return true;
     }
