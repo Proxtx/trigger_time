@@ -16,13 +16,14 @@ export class Trigger {
 
   triggers = async (data) => {
     let requiredHours = Number(data.hours);
-    let currentHours =
-      new Date().getHours() + this.config.timeAdjustment
-        ? this.config.timeAdjustment
-        : 0;
+    let currentHours = new Date();
+    currentHours.setHours(currentHours.getHours()+(this.config.timeAdjustment || 0))
+    currentHours = currentHours.getHours();
 
     let requiredMinutes = Number(data.minutes);
     let currentMinutes = new Date().getMinutes();
+
+   //console.log(requiredMinutes, requiredHours, currentMinutes, currentHours);
 
     if (
       currentHours > requiredHours ||
