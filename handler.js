@@ -9,3 +9,7 @@ getTriggerConfiguration(() => {
     },
   };
 });
+
+if (triggerPresetData) {
+  timeSelect.value = triggerPresetData.hours + ":" + triggerPresetData.minutes;
+}
